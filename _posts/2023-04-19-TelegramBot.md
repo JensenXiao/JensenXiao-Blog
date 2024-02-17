@@ -9,22 +9,22 @@ last_modified_at: 2024-02-17
 --- 
 
 ## Creating a bot using BotFather  
-- 打開 Telegram，在搜尋框輸入 @BotFather，點擊第一項的搜尋結果。
-    ![BotFather](https://hackmd.io/_uploads/Bk5linasp.png)
+- 打開 Telegram，在搜尋框輸入 @BotFather，點擊第一項的搜尋結果。  
+    ![BotFather](https://hackmd.io/_uploads/Bk5linasp.png)  
 
-- 輸入 /start 會出現支援的指令說明。
-    ![start](https://hackmd.io/_uploads/rJ1_nhToa.png)
+- 輸入 /start 會出現支援的指令說明。  
+    ![start](https://hackmd.io/_uploads/rJ1_nhToa.png)  
 
-- 輸入 /newbot 建立機器人。
-    ![newbot](https://hackmd.io/_uploads/SJ_Manpsa.png)
+- 輸入 /newbot 建立機器人。  
+    ![newbot](https://hackmd.io/_uploads/SJ_Manpsa.png)  
     
-- 輸入機器人的名稱
+- 輸入機器人的名稱  
 
-    - 必須以bot結尾。
-    ![命名規則1](https://hackmd.io/_uploads/ByN41TTsp.png)
+    - 必須以bot結尾。  
+    ![命名規則1](https://hackmd.io/_uploads/ByN41TTsp.png)  
 	
-    - 若有人重複使用會請你重新設置。
-    ![命名規則2](https://hackmd.io/_uploads/B13E1pTj6.png)
+    - 若有人重複使用會請你重新設置。  
+    ![命名規則2](https://hackmd.io/_uploads/B13E1pTj6.png)  
 	
 
 - 創建成功會取得 **機器人名稱** & **token**。  
@@ -33,13 +33,13 @@ last_modified_at: 2024-02-17
 - 在 Telegram 搜尋機器人就可以找到你所創建的機器人。  
 
 ## Find Group ChatID  
-- 首先需要將創建好的機器人加入聊天群組。
+- 首先需要將創建好的機器人加入聊天群組。  
 
-- 在瀏覽器中輸入 https://api.telegram.org/bot[your_token]/getUpdates
-    - [your_token] 改為在創建時獲得的token
+- 在瀏覽器中輸入 https://api.telegram.org/bot[your_token]/getUpdates  
+    - [your_token] 改為在創建時獲得的token  
 
-- 會回傳一段 JSON。
-    - "chat" object 中 group_ID 即是群組的 ChatID
+- 會回傳一段 JSON。  
+    - "chat" object 中 group_ID 即是群組的 ChatID  
 ```
 {
 	"update_id":8393,
@@ -81,7 +81,7 @@ last_modified_at: 2024-02-17
     npm install --save-dev @types/node-telegram-bot-api
     ```
     
-- 在程式中應用
+- 在程式中應用  
 
 	``` js
 	var TelegramBot = require('node-telegram-bot-api');
