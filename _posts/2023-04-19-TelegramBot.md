@@ -6,9 +6,7 @@ description: How to use Telegram Bot in Node.js
 tags: [markdown]
 cover: 'assets/images/Telegram-Coin-Logo.jpg'
 last_modified_at: 2024-02-17
----
-
-# Telegram Bot  
+--- 
 
 ## Creating a bot using BotFather  
 - 打開 Telegram，在搜尋框輸入 @BotFather，點擊第一項的搜尋結果。  
@@ -40,7 +38,7 @@ last_modified_at: 2024-02-17
 - 會回傳一段 JSON。  
     - "chat" object 中 "id":<group_ID>  
     - <group_ID> 即是群組的 ChatID  
-    ```xml=
+    ```
     {
       "update_id":8393,
       "message":
@@ -54,7 +52,7 @@ last_modified_at: 2024-02-17
     }
     ```
     - If you created the new group with the bot and you only get {“ok”:true,“result”:[]}。  
-    ```xml=
+    ```
     {
         "ok": true,
         "result": []
@@ -65,15 +63,15 @@ last_modified_at: 2024-02-17
 
 ## Using in Node.js  
 - cd 至專案路徑。  
-    ```javascript=
+    ``` js
     $ cd Testbot
     ```
 - npm init，會建立 package.json 方便管理 npm 的 library。  
-    ```javascript=
+    ``` js
      npm init
     ```
 - 安裝Telegram Bot API。  
-    ```javascript=
+    ``` js
     npm install node-telegram-bot-api --save
 
     or
@@ -82,7 +80,7 @@ last_modified_at: 2024-02-17
     ```
     
 - 在程式中應用  
-```javascript=
+``` js
 var TelegramBot = require('node-telegram-bot-api');
 var token = 'your_token';
 var groupId = 'your_groupId' ;
