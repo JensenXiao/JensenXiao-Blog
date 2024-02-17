@@ -10,7 +10,7 @@ last_modified_at:
 
 ## Creating a bot using BotFather  
 - 打開 Telegram，在搜尋框輸入 @BotFather，點擊第一項的搜尋結果。  
-    ![BotFather](https://hackmd.io/_uploads/Bk5linasp.png  
+    ![BotFather](https://hackmd.io/_uploads/Bk5linasp.png)  
 
 - 輸入 /start 會出現支援的指令說明。  
     ![start](https://hackmd.io/_uploads/rJ1_nhToa.png)  
