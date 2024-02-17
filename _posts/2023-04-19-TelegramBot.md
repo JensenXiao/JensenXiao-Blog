@@ -6,39 +6,39 @@ cover: 'assets/images/Telegram-Coin-Logo.jpg'
 last_modified_at:
 ---
 
-# Telegram Bot
+# Telegram Bot  
 
-## Creating a bot using BotFather
-- 打開 Telegram，在搜尋框輸入 @BotFather，點擊第一項的搜尋結果。
-    ![BotFather](https://hackmd.io/_uploads/Bk5linasp.png)
+## Creating a bot using BotFather  
+- 打開 Telegram，在搜尋框輸入 @BotFather，點擊第一項的搜尋結果。  
+    ![BotFather](https://hackmd.io/_uploads/Bk5linasp.png  
 
-- 輸入 /start 會出現支援的指令說明。
-    ![start](https://hackmd.io/_uploads/rJ1_nhToa.png)
+- 輸入 /start 會出現支援的指令說明。  
+    ![start](https://hackmd.io/_uploads/rJ1_nhToa.png)  
 
-- 輸入 /newbot 建立機器人。
-    ![newbot](https://hackmd.io/_uploads/SJ_Manpsa.png)
+- 輸入 /newbot 建立機器人。  
+    ![newbot](https://hackmd.io/_uploads/SJ_Manpsa.png)  
     
-- 輸入機器人的名稱
-    - 必須以bot結尾。
-    ![命名規則1](https://hackmd.io/_uploads/ByN41TTsp.png)
-    - 若有人重複使用會請你重新設置。
-    ![命名規則2](https://hackmd.io/_uploads/B13E1pTj6.png)
+- 輸入機器人的名稱  
+    - 必須以bot結尾。  
+    ![命名規則1](https://hackmd.io/_uploads/ByN41TTsp.png)  
+    - 若有人重複使用會請你重新設置。  
+    ![命名規則2](https://hackmd.io/_uploads/B13E1pTj6.png)  
 
-- 創建成功會取得 **機器人名稱** & **token**。
-    ![Done](https://hackmd.io/_uploads/rJkie6Ti6.png)
+- 創建成功會取得 **機器人名稱** & **token**。  
+    ![Done](https://hackmd.io/_uploads/rJkie6Ti6.png)  
 
-- 在 Telegram 搜尋機器人就可以找到你所創建的機器人。
+- 在 Telegram 搜尋機器人就可以找到你所創建的機器人。  
 
-## Find Group ChatID
-- 首先需要將創建好的機器人加入聊天群組。
+## Find Group ChatID  
+- 首先需要將創建好的機器人加入聊天群組。  
 
-- 在瀏覽器中輸入 https://api.telegram.org/bot[your_token]/getUpdates
-    - [your_token] 改為在創建時獲得的token
+- 在瀏覽器中輸入 https://api.telegram.org/bot[your_token]/getUpdates  
+    - [your_token] 改為在創建時獲得的token  
 
-- 會回傳一段 JSON。
-    - "chat" object 中 "id":<group_ID>
-    - <group_ID> 即是群組的 ChatID
-    ```
+- 會回傳一段 JSON。  
+    - "chat" object 中 "id":<group_ID>  
+    - <group_ID> 即是群組的 ChatID  
+    ```xml=
     {
       "update_id":8393,
       "message":
@@ -51,27 +51,27 @@ last_modified_at:
       }
     }
     ```
-    - If you created the new group with the bot and you only get {“ok”:true,“result”:[]}。
-    ```
+    - If you created the new group with the bot and you only get {“ok”:true,“result”:[]}。  
+    ```xml=
     {
         "ok": true,
         "result": []
     }
     ```
-    - remove and add the bot again to the group。
+    - remove and add the bot again to the group。  
     
 
-## Using in Node.js
-- cd 至專案路徑。
-    ```
+## Using in Node.js  
+- cd 至專案路徑。  
+    ```javascript=
     $ cd Testbot
     ```
-- npm init，會建立 package.json 方便管理 npm 的 library。
-    ```
+- npm init，會建立 package.json 方便管理 npm 的 library。  
+    ```javascript=
      npm init
     ```
-- 安裝Telegram Bot API。
-    ```
+- 安裝Telegram Bot API。  
+    ```javascript=
     npm install node-telegram-bot-api --save
 
     or
@@ -79,7 +79,7 @@ last_modified_at:
     npm install --save-dev @types/node-telegram-bot-api
     ```
     
-- 在程式中應用
+- 在程式中應用  
 ```javascript=
 var TelegramBot = require('node-telegram-bot-api');
 var token = 'your_token';
@@ -112,6 +112,6 @@ setInterval(() => {
 
 ```
 
-## Reference
-- [Node.js Telegram Bot API](https://github.com/yagop/node-telegram-bot-api)
-- [API Reference](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md)
+## Reference  
+- [Node.js Telegram Bot API](https://github.com/yagop/node-telegram-bot-api)  
+- [API Reference](https://github.com/yagop/node-telegram-bot-api/blob/master/doc/api.md)  
