@@ -6,7 +6,7 @@ locale: null # null (default), en-US, zh-CN, zh-TW, ...
 date_format: # "%B %-d, %Y" (default), "%Y. %m. %d", ... https://www.shortcutfoo.com/app/dojos/ruby-date-format-strftime/cheatsheet
 footer_copyright: '&copy; 2022~ demo'
 og_image: 'assets/images/jekyll-theme-twail.png' # Default OpenGraph Image
-baseurl: '/blog'
+baseurl: ''
 
 # Profile
 profile:
