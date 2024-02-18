@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = "jekyll-theme-twail"
+  spec.name          = "jekyll-theme"
   spec.version       = "1.0.0"
-  spec.authors       = ["leetaewook"]
-  spec.email         = ["twleev@gmail.com"]
+  spec.authors       = ["authors"]
 
-  spec.summary       = "Card style Jekyll theme for blog"
-  spec.homepage      = "https://github.com/leetaewook/jekyll-theme-twail"
+  spec.summary       = "Jekyll theme for blog"
   spec.license       = "MIT"
 
   spec.metadata["plugin_type"] = "theme"
