@@ -3,7 +3,7 @@ layout: post
 title: Self-signed certificate
 date: 2023-6-21
 description: Generating a self-signed certificate using OpenSSL
-tags: [Markdown , TLS/SSL]
+tags: [Security , TLS/SSL]
 cover: 'assets/images/OpenSSL_logo.png'
 last_modified_at: 2024-02-17
 --- 
