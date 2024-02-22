@@ -24,7 +24,7 @@ sent in the clear.
     ```
     cd C:\Program Files\RabbitMQ Server\rabbitmq_server-3.9.4\sbin (參考依照實際安裝路徑)
     ```
-- 檢查是否有rabbitmq-auth-mechanism-ssl plugin?  
+- 檢查是否有rabbitmq-auth-mechanism-ssl plugin ?  
     ```
     rabbitmq-plugins list
     ```
@@ -57,20 +57,23 @@ sent in the clear.
 - 修改 **advanced.config** (若無此檔可自行新增)  
     ![AdvancedConfig](https://hackmd.io/_uploads/ry3wcNTuT.png)  
     - {ssl, [{versions, ['tlsv1.2', ~~'tlsv1.1'~~]}]}, 啟用的tls版本   
-            - (使用<span class="red"> tlsv1.2 </span>以上版本， tlsv1.1 協定已棄用，會被掃出中風險)。  
-    - {auth_mechanisms,[~~'PLAIN'~~, 'EXTERNAL']}, 啟用的驗證方式。  
-            - (身份驗證使用<span class="red"> EXTERNAL</span>，PLAIN 明文身份驗證，會被掃出中風險)。  
-    - {ssl_listeners, [5671]}, 指定 ssl port。  
+        - (使用<span class="red"> tlsv1.2 </span>以上版本， tlsv1.1 協定已棄用，會被掃出中風險)  
+              
+    - {auth_mechanisms,[~~'PLAIN'~~, 'EXTERNAL']}, 啟用的驗證方式  
+        - (身份驗證使用<span class="red"> EXTERNAL</span>，PLAIN 明文身份驗證，會被掃出中風險)  
+              
+    - {ssl_listeners, [5671]}, 指定 ssl port  
+    
     - {ssl_options, []} 設定ssl連線憑證  
-            - cacertfile 設定Certificate Authority檔案路徑。  
-            - certfile 設定Certificate 檔案路徑。  
-            - keyfile 設定Private Key 檔案路徑。  
-            - {verify, verify_peer} 雙向驗證。  
-            - {verify, verify_none} 不驗證Client端憑證。  
-            - {fail_if_no_peer_cert, true} Client端沒有提供憑證不可連線。  
-            - {fail_if_no_peer_cert, false} Client端沒有提供憑證可連線。  
+        - cacertfile 設定Certificate Authority檔案路徑  
+        - certfile 設定Certificate 檔案路徑  
+        - keyfile 設定Private Key 檔案路徑  
+        - {verify, verify_peer} 雙向驗證  
+        - {verify, verify_none} 不驗證Client端憑證  
+        - {fail_if_no_peer_cert, true} Client端沒有提供憑證不可連線  
+        - {fail_if_no_peer_cert, false} Client端沒有提供憑證可連線  
 
-- Config正確設定後可以檢查會有"EXTERNAL"標記  
+- Config 正確設定後可以檢查會有"EXTERNAL"標記  
     ![螢幕擷取畫面 2024-01-09 131408](https://hackmd.io/_uploads/ryK48U5_a.png)  
 
 
@@ -91,7 +94,7 @@ sent in the clear.
     openssl pkcs12 -export -in certificate.crt -inkey private.key -out client.pfx -passout pass:
     ```
     
-- 或是使用伺服器中 Certificate Authority (CA.crt & CA.Key)產生Client端專用憑證。  
+- 或是使用伺服器中 Certificate Authority (CA.crt & CA.Key)產生 Client 端專用憑證。  
     ```
     //生成 client-key
     openssl genrsa -out client-key.pem
@@ -121,6 +124,56 @@ sent in the clear.
   }
 ```
 
+- C# Client 端連線程式調整  
+    - 使用 appsettings 中設定 bool 值，切換連線方式保留設定彈性。  
+    - 增加 SslOption 設定。  
+
+    ```csharp
+    lock (_lock)
+    {
+        //...
+        
+        if (_env.EnableSSL)
+        {
+            var certPathList = _env.CertPath.Split(';');
+            var certPassphraseList = _env.CertPassphrase.Split(';');
+            
+            factory = new ConnectionFactory
+            {
+                DispatchConsumersAsync = true,
+                AutomaticRecoveryEnabled = true,
+                AuthMechanisms = new AuthMechanismFactory[] { new ExternalMechanismFactory() },
+            };
+            
+            foreach (var item in hostList)
+            {
+                var endPoint = new AmqpTcpEndpoint
+                {
+                    HostName = item,
+                    Port = Convert.ToInt32(portList[index]),
+                    Ssl = new SslOption
+                    { 
+                        Enabled = true,
+                        ServerName = item,
+                        CertPath = certPathList[index],
+                        CertPassphrase = certPassphraseList[index++],
+                        Version = SslProtocols.Tls12
+                    }
+                };
+
+                addressList.Add(endPoint);
+            }
+            
+            //...
+            
+        }
+        else
+        {
+            //...
+        } 
+    } // lock
+    ```
+
 
 ## RabbitMQ Management  
 
@@ -134,11 +187,19 @@ sent in the clear.
 - 當以上都正確設定完成後，在 RabbitMQ Management 中可以確認，連線已啟用TLS/SSL協議  
   ![Connections](https://hackmd.io/_uploads/rkY6xQ0ua.png)  
 
-- 並且 Authentication 是使用 EXTERNAL  
+- 並且 Authentication 確認是使用 EXTERNAL 機制  
   ![EXTERNAL](https://hackmd.io/_uploads/B1zNW7COa.png)  
   ![Ssl](https://hackmd.io/_uploads/HkpXM7Aup.png)  
 
-
+- 使用 Swagger 測試  
+    - 在網頁測試模擬 Publish 發送訊息  
+    ![Swagger測試](https://hackmd.io/_uploads/Hk4zYXNna.png)
+ 
+    
+    - 後端 Subscribe 接收  
+    ![模擬接收](https://hackmd.io/_uploads/HkK_DQVn6.png)  
+  
+  
 ## Reference  
 - [Self-signed certificate](https://jensenxiao.github.io/Self-signed-certificate)  
 - [RabbitMQ - TLS Support](https://www.rabbitmq.com/ssl.html)  
