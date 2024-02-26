@@ -13,12 +13,30 @@ last_modified_at: 2024-02-22
   
   ![難字不正常](https://hackmd.io/_uploads/SJn6ENEn6.png)  
 
-- 設定 EUDC 字型檔案與系統字型連結  
-    - 當拿到字造字型檔 (TTE or TTF) 放到電腦後，要設定機碼讓它連結到系統字型  
-    - 在開始中輸入「regedit」，機碼目錄為 電腦\HKEY_CURRENT_USER\EUDC\950  
-    - 機碼 SystemDefaultEUDCFont，修改值為 EUDC 字型檔所在目錄  
+- 根據不同類型檔案設定  
+    - **.TTE** 設定字型檔案與系統字型連結  
+        - 當拿到字造字型檔放到電腦後，要設定機碼讓它連結到系統字型  
+        ![字型檔](https://hackmd.io/_uploads/Bynz4Fr3p.png)  
+
+        - 使用 Administrator 在開始中輸入「regedit」開啟登陸編輯程式  
+        ![Regedit](https://hackmd.io/_uploads/ryFKMFr3T.png)  
+        
+        - 機碼目錄為 電腦\HKEY_CURRENT_USER\EUDC\950  
+        ![機碼](https://hackmd.io/_uploads/SJsbXKBha.png)  
+        
+        - 機碼 SystemDefaultEUDCFont，修改數值資料為 EUDC 字型檔所在目錄  
+        ![數值資料](https://hackmd.io/_uploads/HkKKmKB3p.png)  
+
+
+    - **.TTF** 安裝字型檔至系統  
+        - 使用 Administrator 開啟字型檔，點選安裝  
+            ![字型檔](https://hackmd.io/_uploads/Bynz4Fr3p.png)  
+            
+            ![TTF檔案安裝](https://hackmd.io/_uploads/B1yNGKHhp.png)  
+
+- 將系統重新啟動  
   
-- 重開機後，可直接開啟 Word 檔，另存成 PDF 檔案來驗證 一般字及自造字 是否完整呈現  
+- 開啟 Word 檔，另存成 PDF 檔案來驗證 一般字及自造字 是否完整呈現  
 
 
 ## Aspose.Words 轉 PDF 檔，只有顯示自造字  
