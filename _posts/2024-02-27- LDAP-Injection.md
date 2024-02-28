@@ -53,5 +53,5 @@ last_modified_at: 2024-02-28
     ```
 
 ## Reference  
-[LDAP Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html)  
-[AntiXSS 4.0 Released](https://learn.microsoft.com/zh-tw/archive/blogs/securitytools/antixss-4-0-released)  
+- [LDAP Injection Prevention](https://cheatsheetseries.owasp.org/cheatsheets/LDAP_Injection_Prevention_Cheat_Sheet.html)  
+- [AntiXSS 4.0 Released](https://learn.microsoft.com/zh-tw/archive/blogs/securitytools/antixss-4-0-released)  
