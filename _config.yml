@@ -1,4 +1,5 @@
 # Site settings
+url: https://jensenxiao.github.io
 title: 'Jensen Blog'
 description: 'Card style Jekyll theme for blog'
 title_seperator: '-' # "-" (default), "|", ...
