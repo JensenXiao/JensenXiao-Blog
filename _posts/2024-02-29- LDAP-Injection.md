@@ -1,11 +1,11 @@
 ---
 layout: post
 title: LDAP Injection
-date: 2024-02-27
+date: 2024-02-29
 description: How to Prevent LDAP Injection
 tags: [Security , Checkmarx , C Sharp]
 cover: 'assets/images/LDAP-Injection.png'
-last_modified_at: 2024-02-28
+last_modified_at: 2024-02-29
 --- 
 ## 弱點風險 
 - Checkmarx 弱點掃描掃出，使用 DirectorySearcher 建立 LDAP 查詢句，其中 search.Filter 使用沒有被處理過不受信任的字串，可能會有被注入攻擊的機會。  
